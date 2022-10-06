@@ -3,23 +3,29 @@
 
 import random
 
-n = random.randint(0,100)
-appreciation = "?"
-nbr = 0
+nombre_aleatoire = random.randint(0,100)
+nombre_de_tentative_par_lutilisateur = 0
 print("J'ai choisi un nombre entre 0 et 100 a vous de le deviner")
 while True:
-    var = input("Entrez un nombre:")
-    var = int(var)
-    if var < n :
-        nbr = +1
-        appreciation = "Mauvais reponse, le nombre est plus grande que:"
-        print(appreciation, var)
+    nombre_entre_par_lutilisateur = int(input("Entrez un nombre:"))
+    if nombre_entre_par_lutilisateur < nombre_aleatoire :
+        nombre_de_tentative_par_lutilisateur = nombre_de_tentative_par_lutilisateur +1
+        print("Mauvais reponse, le nombre est plus grande que:", nombre_entre_par_lutilisateur)
 
-    else :
-        nbr = +1
-        appreciation = "Mauvais reponse, le nombre est plus petit que:"
-        print(appreciation, var)
-    if var == n:
-        appreciation = "Bravo le nombre etait:"
-        print(appreciation, var, "Nombre de tentative:", nbr)
-        break
+    elif nombre_entre_par_lutilisateur > nombre_de_tentative_par_lutilisateur:
+        nombre_de_tentative_par_lutilisateur = nombre_de_tentative_par_lutilisateur +1
+        print("Mauvais reponse, le nombre est plus petit que:", nombre_entre_par_lutilisateur)
+
+    if nombre_entre_par_lutilisateur == nombre_aleatoire:
+
+        print("Bravo le nombre etait:", nombre_entre_par_lutilisateur, "Nombre de tentative:", nombre_de_tentative_par_lutilisateur)
+        reponse_de_lutilisateur_si_il_veut_rejouer = input("Veux tu rejouer? oui/non:")
+
+        if reponse_de_lutilisateur_si_il_veut_rejouer == "oui" :
+            pass
+            nombre_aleatoire = random.randint(0, 100)
+            nombre_de_tentative_par_lutilisateur = 0
+            print("J'ai choisi un nombre entre 0 et 100 a vous de le deviner")
+
+        elif reponse_de_lutilisateur_si_il_veut_rejouer == "non" :
+            break
