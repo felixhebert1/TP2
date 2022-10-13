@@ -2,30 +2,35 @@
 
 
 import random
-
-nombre_aleatoire = random.randint(0,100)
-nombre_de_tentative_par_lutilisateur = 0
-print("J'ai choisi un nombre entre 0 et 100 a vous de le deviner")
+nombre_tentative = 0
+print("Choisissait un nombre minimal et un nombre maximal pour joue a un jeu de devinette")
+nombre_minimal = int(input("Entrer un nombre minimal:"))
+nombre_maximal = int(input("Entrer un nombre miximal:"))
+nombre_aleatoire = random.randint(nombre_minimal, nombre_maximal)
+print("J'ai choisit un chiffre aleatoire entre", nombre_minimal, "et", nombre_maximal, "a vous de le deviner")
 while True:
-    nombre_entre_par_lutilisateur = int(input("Entrez un nombre:"))
-    if nombre_entre_par_lutilisateur < nombre_aleatoire :
-        nombre_de_tentative_par_lutilisateur = nombre_de_tentative_par_lutilisateur +1
-        print("Mauvais reponse, le nombre est plus grande que:", nombre_entre_par_lutilisateur)
+    essaie_joueur = int(input("Entrez un nombre:"))
+    if essaie_joueur < nombre_aleatoire :
+        nombre_tentative = nombre_tentative + 1
+        print("Mauvais reponse, le nombre est plus grande que:", essaie_joueur)
 
-    elif nombre_entre_par_lutilisateur > nombre_de_tentative_par_lutilisateur:
-        nombre_de_tentative_par_lutilisateur = nombre_de_tentative_par_lutilisateur +1
-        print("Mauvais reponse, le nombre est plus petit que:", nombre_entre_par_lutilisateur)
+    elif essaie_joueur > nombre_tentative:
+        nombre_tentative = nombre_tentative + 1
+        print("Mauvais reponse, le nombre est plus petit que:", essaie_joueur)
 
-    if nombre_entre_par_lutilisateur == nombre_aleatoire:
+    if essaie_joueur == nombre_aleatoire:
 
-        print("Bravo le nombre etait:", nombre_entre_par_lutilisateur, "Nombre de tentative:", nombre_de_tentative_par_lutilisateur)
-        reponse_de_lutilisateur_si_il_veut_rejouer = input("Veux tu rejouer? oui/non:")
+        print("Bravo le nombre etait:", essaie_joueur, "Nombre de tentative:", nombre_tentative)
+        rejouer = input("Veux tu rejouer? oui/non:")
 
-        if reponse_de_lutilisateur_si_il_veut_rejouer == "oui" :
+        if rejouer == "oui" :
             pass
-            nombre_aleatoire = random.randint(0, 100)
-            nombre_de_tentative_par_lutilisateur = 0
-            print("J'ai choisi un nombre entre 0 et 100 a vous de le deviner")
+            nombre_tentative = 0
+            print("Choisissait un nombre minimal et un nombre maximal pour joue a un jeu de devinette")
+            nombre_minimal = int(input("Entrer un nombre minimal:"))
+            nombre_maximal = int(input("Entrer un nombre miximal:"))
+            nombre_aleatoire = random.randint(nombre_minimal, nombre_maximal)
+            print("J'ai choisit un chiffre aleatoire entre", nombre_minimal, "et", nombre_maximal, "a vous de le deviner")
 
-        elif reponse_de_lutilisateur_si_il_veut_rejouer == "non" :
+        elif rejouer == "non" :
             break
